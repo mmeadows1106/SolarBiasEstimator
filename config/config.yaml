@@ -1,0 +1,49 @@
+logLevel:
+    DEBUG
+
+opts:
+    projectName: SolarBiasEstimator
+    debugMode: True
+    pushoverUserToken: gzij1v7z5m7o8ba16h2yo1ci3xs2pv
+    pushoverAppToken: ao16k8xv9f6y64dexx9nzf5vr2utsh
+    upperLeft: [46.0, -119.4]
+    lowerRight: [41.0, -109.5]
+    overwrite: True
+    outputResolutionMeters: 1000
+    outputResolutionDegrees: 0.01
+    
+    applyQC: False
+    obsSites: [ITD14, ITD21, ODT56, ODT81]
+    SGMSites: [FALS14R17, LIME11R8]
+    
+    trainMLModel: True
+    testHyperparameters: True
+    testMLModel: True
+    compareToBaseline: False
+    testFor1Model: 8        # 0 for test all models. 1-8 for testing individual WRF models (see ReadMe -> Usage -> "Trains and tests random forest model" -> notes about compareToBaseline
+ 
+    biasCorrectHistorical: True
+    # if bias correcting all data in a database, enter 0 for startTime and endTime
+    startTime: 2023-01-01T00:00:00     # YYYY-MM-DDTHH:MM:SS or 0
+    endTime: 2023-04-18T06:00:00
+  #  pathHistoricalDB: '\\fillmore\AtSciPublic\pointStats\VER_OKR\'
+    pathHistoricalDB: "mssql+pyodbc://tally/DataScience?driver=ODBC+Driver+17+for+SQL+Server"
+    # slight differences in SQL database vs SQLite - enter True below for SQLite
+    histDB_sqlite: True
+    
+#parameters:
+#    ws_stdev: 2.5934288280375717    # This is the standard deviation for wind speed that was used when the model was trained
+#    n_estimators: 100
+#    max_depth: 18
+#    min_samples_split: 25
+#    max_leaf_nodes: None
+#    min_samples_leaf: 1
+#    max_samples: None
+#    max_features: 0.5
+    
+paths:
+    db: '\\fillmore\AtSciPublic\pointStats\VER_OKR\'
+    previous_db: 'C:\PROJECTS\WSBiasEstimator\db'
+    biasCorrModel: '\\fillmore\AtSciPublic\pointStats\VER_OKR\bias_correct_random_forest.joblib'
+    output: '.\output\'
+    input: '.\input\'
